@@ -62,7 +62,7 @@ public static void main(String[] args) throws IOException {
 	    RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(j, density); 	// Create a random graph with j vertices and the given density
 
 	    long start = System.nanoTime(); 									// Record the start time
-	    float[][] shortestPaths = floyd(graph); 								// Compute the shortest paths using the Floyd's algorithm
+	    float[][] shortestPaths = floyd(graph); 							// Compute the shortest paths using the Floyd's algorithm
 	    long end = System.nanoTime(); 										// Record the end time
 	    long time = end - start; 											// Calculate the execution time
 	    time_array[j-500] = time; 											// Store the execution time in the array 

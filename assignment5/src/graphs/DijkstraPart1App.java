@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MainApp {
+public class DijkstraPart1App {
 
 	static final String OUTPUT_FILE = "a5_dijsktra_part1.txt";
 	static final int MIN = 500;
@@ -49,10 +49,6 @@ public class MainApp {
             e.printStackTrace();
         }
 
-
-		
-		
-		
 		System.out.println("Terminating");
 	} // End of Main
 

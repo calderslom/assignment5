@@ -20,6 +20,7 @@ public class Node<T extends Comparable> {
         left = null;
         right = null;
         parent = null;
+        this.vertex = v;
         this.weight = weight;
     }
 

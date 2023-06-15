@@ -147,8 +147,9 @@ public class AdjMatrixGraph<T>
              System.out.printf("[%d]", i);
              for (int j = 0; j < size; j++)
              {
-                if (this.getNode(i,j) != null)
-                    System.out.printf("(%d,%.2f) ", this.getNode(i,j).getVertex().getId(), this.getNode(i,j).getWeight());
+                if (this.getNode(i,j) != null) {
+                		System.out.printf("(%d,%.2f) ", this.getNode(i,j).getVertex().getId(), this.getNode(i,j).getWeight());
+                }
                 else System.out.printf("(  ,   ) ");
              }
              System.out.println();
