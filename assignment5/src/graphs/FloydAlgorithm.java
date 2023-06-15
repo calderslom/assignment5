@@ -10,9 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FloydAlgorithm {
-	public static int[][] floyd(AdjMatrixGraph graph) {
+	public static float[][] floyd(AdjMatrixGraph graph) {
         int V = graph.size;													// storing size of graph in variable V
-        int[][] D = new int[V][V];											// matrix called D which will store the shortest distances to reach vertices 
+        float[][] D = new float[V][V];											// matrix called D which will store the shortest distances to reach vertices 
          
  
 
@@ -62,7 +62,7 @@ public static void main(String[] args) throws IOException {
 	    RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(j, density); 	// Create a random graph with j vertices and the given density
 
 	    long start = System.nanoTime(); 									// Record the start time
-	    int[][] shortestPaths = floyd(graph); 								// Compute the shortest paths using the Floyd's algorithm
+	    float[][] shortestPaths = floyd(graph); 								// Compute the shortest paths using the Floyd's algorithm
 	    long end = System.nanoTime(); 										// Record the end time
 	    long time = end - start; 											// Calculate the execution time
 	    time_array[j-500] = time; 											// Store the execution time in the array 
@@ -78,14 +78,14 @@ public static void main(String[] args) throws IOException {
    
 	
 	int size = 5000; 														// The number of vertices in the random graph
-	long[] time_array1 = new long[9]; 									// array to store execution times
+	long[] time_array1 = new long[9]; 										// array to store execution times
 	FileWriter floyd_writer2 = new FileWriter("floyd2.txt"); 				// FileWriter to write output to a file named "floyd.txt"
 
 	for (int i = 1; i < 10; i++) { 											// Iterate over a range of values for i where i represents the density of the graph
 	    RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(size, i); 	// Create a random graph with i density and the given size
 
 	    long start = System.nanoTime(); 									// Record the start time
-	    int[][] shortestPaths = floyd(graph); 								// Compute the shortest paths using the Floyd's algorithm
+	    float[][] shortestPaths = floyd(graph); 							// Compute the shortest paths using the Floyd's algorithm
 	    long end = System.nanoTime(); 										// Record the end time
 	    long time = end - start; 											// Calculate the execution time
 	    time_array1[i-1] = time; 											// Store the execution time in the array 
@@ -103,3 +103,4 @@ public static void main(String[] args) throws IOException {
 	
 }
 }
+
