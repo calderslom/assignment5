@@ -20,8 +20,23 @@ public class MainApp {
 		new DijkstraPart1App();
 		DijkstraPart1App.main(args);
 		
+		new FloydAlgorithm();
+		try {
+			FloydAlgorithm.main(args);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		new DijkstraPart2App();
 		DijkstraPart2App.main(args);
+		
+		new FloydAlgorithmP2();
+		
+		try {
+			FloydAlgorithmP2.main(args);
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
 		
 	} // End of Main
 

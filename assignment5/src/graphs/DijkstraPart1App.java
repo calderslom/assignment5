@@ -36,15 +36,14 @@ public class DijkstraPart1App {
          
             // Generating graphs that have vertices ranging from [500,1000]
     		for (int i = MIN; i <= MAX; i++) {
-    			graph = new RandomAdjMatrixGraph(i, density);
-    			
-    			   
-    			
+    			graph = new RandomAdjMatrixGraph(i, density);	
     			start = System.nanoTime();
+    			
     			//APSP implementation of Dijkstra's algorithm.
     			for (int j = 0; j < graph.size; j++) {
     				dijkstraResults = DijkstrasAlgorithm.dijkstra(graph, j);
     			}
+    			
     			end = System.nanoTime();
     			total = end - start;
     			bufferedWriter.write(i + "\t" + total + "\n");
