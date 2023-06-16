@@ -9,13 +9,12 @@ public class MainAppTester {
 		
 		int density = 5;
 		
-		System.out.println("RANDOM\n");
-		RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(15, 8);
+		RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(6, 7);
 		
 //		g.printGraph();
 		
 		float[] shortest;
-		
+		System.out.println("Dijkstras: \n");
 		for (int j = 0; j < graph.size; j++) {
 			//System.out.println(j);
 			shortest = DijkstrasAPSP.dijkstra(graph, j);
@@ -29,8 +28,9 @@ public class MainAppTester {
 			System.out.println();
 		}
 		
+		System.out.println("\nFloyds: \n");
 		float[][] shortestPaths = FloydAlgorithm.floyd(graph);
-		System.out.println("Random index = " + shortestPaths[3][4]);
+		//System.out.println("Random index = " + shortestPaths[3][4]);
 		for (int j = 0; j < shortestPaths.length; j ++) {
 			System.out.print("{");
 			for (int i = 0; i < shortestPaths[j].length; i++) {

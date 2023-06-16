@@ -144,6 +144,21 @@ public class Test {
 		System.out.print("}");
 		System.out.println();
 		
+		
+		System.out.println("\nFloyds: \n");
+		float[][] shortestPaths = FloydAlgorithm.floyd(graph);
+		for (int j = 0; j < shortestPaths.length; j ++) {
+			System.out.print("{");
+			for (int i = 0; i < shortestPaths[j].length; i++) {
+				if (shortestPaths[i][j] > 100000) System.out.print("inf,");
+				else System.out.print(shortestPaths[i][j]+",");
+			}
+			System.out.print("}");
+			System.out.println();
+			
+		}
+		
+		
 		System.out.println("\n\t LOOP!");
 		for (int i = 0; i < graph.size; i++) {
 			shortest = d.dijkstra(graph, i);

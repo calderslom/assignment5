@@ -15,17 +15,23 @@ public class FloydAlgorithm {
         float[][] D = new float[V][V];											// matrix called D which will store the shortest distances to reach vertices 
          
  
+/*
+        for (int i = 0; i < V; i++) {
+            System.arraycopy(graph.adjMatrix[i], 0, D[i], 0, V);
+        }
+  */      
+        
 
-  
         // Copy adjacency matrix to D
         for (int i = 0; i < V; i++) {										// looping through adjacency matrix representation of the graph
             for (int j = 0; j < V; j++) {
-            	Node<Integer> node = graph.getNode(i, j);
-                if(graph.adjMatrix[i][j] == null) {
+            	Node node = graph.getNode(i, j);
+                if(node == null) {
                     D[i][j] = 0;											// if node at i,j position in the graph is null assign 0 at that position in D matrix
                 }
-                if(node != null && node.getValue() != null) {				// if node is not null in the graph copy the value into the D matrix in the same position
-                	D[i][j] = node.getValue();
+                else {	
+                	float weight = node.getWeight()	;					// if node is not null in the graph copy the value into the D matrix in the same position
+                	D[i][j] = weight;
                 }
             }
         }
@@ -62,7 +68,7 @@ public static void main(String[] args) throws IOException {
 	    RandomAdjMatrixGraph graph = new RandomAdjMatrixGraph(j, density); 	// Create a random graph with j vertices and the given density
 
 	    long start = System.nanoTime(); 									// Record the start time
-	    float[][] shortestPaths = floyd(graph); 							// Compute the shortest paths using the Floyd's algorithm
+	    float[][] shortestPaths = floyd(graph); 								// Compute the shortest paths using the Floyd's algorithm
 	    long end = System.nanoTime(); 										// Record the end time
 	    long time = end - start; 											// Calculate the execution time
 	    time_array[j-500] = time; 											// Store the execution time in the array 
