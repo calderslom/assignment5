@@ -22,7 +22,7 @@ public class DijkstraPart2App {
 		int density = 5;
 		RandomAdjMatrixGraph graph;
 		long start, end, total;
-		float[] shortest;	
+		DijkstraOutput dijkstraResults;
 		System.out.println("The results of Part 2: Dijkstra's Algorithm are stored in - " + OUTPUT_FILE + " - located in your working directory.\n");
 		
 		try {
@@ -35,15 +35,14 @@ public class DijkstraPart2App {
          
             // Generating graphs that have vertices ranging from [500,1000]
     		for (int i = MIN; i <= MAX; i++) {
-    			graph = new RandomAdjMatrixGraph(5000, i);
-    			/*
-    			 *  Because Dijkstra's algorithm only returns the minimum cost for an individual vertex 
-    			 *  we will call it with every vertex in the graph
-    			 */
+    			graph = new RandomAdjMatrixGraph(i, density);	
     			start = System.nanoTime();
+    			
+    			//APSP implementation of Dijkstra's algorithm.
     			for (int j = 0; j < graph.size; j++) {
-    				shortest = DijkstrasAPSP.dijkstra(graph, j);
+    				dijkstraResults = DijkstrasAlgorithm.dijkstra(graph, j);
     			}
+    			
     			end = System.nanoTime();
     			total = end - start;
     			bufferedWriter.write(i + "\t" + total + "\n");

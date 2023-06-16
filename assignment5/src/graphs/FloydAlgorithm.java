@@ -12,27 +12,28 @@ import java.io.IOException;
 public class FloydAlgorithm {
 	public static float[][] floyd(AdjMatrixGraph graph) {
         int V = graph.size;													// storing size of graph in variable V
-        float[][] D = new float[V][V];											// matrix called D which will store the shortest distances to reach vertices 
-         
- 
-/*
-        for (int i = 0; i < V; i++) {
-            System.arraycopy(graph.adjMatrix[i], 0, D[i], 0, V);
-        }
-  */      
-        
+        float[][] D = new float[V][V];										// matrix called D which will store the shortest distances to reach vertices 
+
 
         // Copy adjacency matrix to D
         for (int i = 0; i < V; i++) {										// looping through adjacency matrix representation of the graph
             for (int j = 0; j < V; j++) {
-            	Node node = graph.getNode(i, j);
-                if(node == null) {
-                    D[i][j] = 0;											// if node at i,j position in the graph is null assign 0 at that position in D matrix
+            	Node node = graph.adjMatrix[i][j];
+            	           	
+            	
+            	if((node != null)) {
+            		
+                	float weight = node.getWeight();						// if node is not null in the graph copy the weight into the D matrix in the same position
+                	D[j][i] = weight;
+                  											
                 }
-                else {	
-                	float weight = node.getWeight()	;					// if node is not null in the graph copy the value into the D matrix in the same position
-                	D[i][j] = weight;
+                else {	 
+                	
+                	
+                	D[j][i] = Integer.MAX_VALUE;							// if node at j,i position in the graph is null assign infinity at that position in D matrix
+            
                 }
+              
             }
         }
         
@@ -47,7 +48,8 @@ public class FloydAlgorithm {
             for (int i = 0; i < V; i++) {									// Iterate over all source vertices
                 for (int j = 0; j < V; j++) {								// Iterate over all destination vertices						
                     if (D[i][k] + D[k][j] < D[i][j]) {						// If the path through vertex k is shorter
-                        D[i][j] =(D[i][k] + D[k][j]) ;						// Update the shortest path distance
+                        D[i][j] =(D[i][k] + D[k][j]) ;
+                        													// Update the shortest path distance
                     }
                 }
             }
@@ -59,7 +61,7 @@ public class FloydAlgorithm {
 
 public static void main(String[] args) throws IOException {
 	
-	
+
 	int density = 5; 														// The density of the random graph
 	long[] time_array = new long[500]; 										// array to store execution times
 	FileWriter floyd_writer = new FileWriter("floyd.txt"); 					// FileWriter to write output to a file named "floyd.txt"
@@ -81,10 +83,10 @@ public static void main(String[] args) throws IOException {
 	floyd_writer.close(); 													// Close the FileWriter
 	System.out.println("Output written to file successfully."); 			// Print a success message to the console
 
-   
+  
 	
 	int size = 5000; 														// The number of vertices in the random graph
-	long[] time_array1 = new long[9]; 										// array to store execution times
+	long[] time_array1 = new long[10]; 										// array to store execution times
 	FileWriter floyd_writer2 = new FileWriter("floyd2.txt"); 				// FileWriter to write output to a file named "floyd.txt"
 
 	for (int i = 1; i < 10; i++) { 											// Iterate over a range of values for i where i represents the density of the graph
@@ -107,6 +109,7 @@ public static void main(String[] args) throws IOException {
   
 	
 	
-}
-}
+}	
 
+	
+}
